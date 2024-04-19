@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package smartretail;
+
+service SmartRetail {
+  
+  rpc ScanItem(ScanItemRequest) returns (ScanItemResponse) {}
+
+  
+  rpc BagItem(BagItemRequest) returns (BagItemResponse) {}
+
+  
+  rpc Checkout(CheckoutRequest) returns (CheckoutResponse) {}
+
+  
+  rpc ListProducts(ListProductsRequest) returns (stream Product) {}
+
+  
+  rpc TrackBaggedItems(TrackBaggedItemsRequest) returns (stream BaggedItem) {}
+}
+
+
+message ScanItemRequest {
+  string barcode = 1; 
+}
+
+message ScanItemResponse {
+  bool success = 1; 
+  string itemName = 2; 
+  double price = 3; 
+}
+
+message BagItemRequest {
+  string barcode = 1; 
+}
+
+message BagItemResponse {
+  bool success = 1; 
+}
+
+message CheckoutRequest {
+  
+}
+
+message CheckoutResponse {
+  double total = 1; 
+}
+
+message ListProductsRequest {
+  
+}
+
+message Product {
+  int32 id = 1;
+  string barcode = 2;
+  string name = 3;
+  double price = 4;
+}
+
+message TrackBaggedItemsRequest {
+  
+}
+
+message BaggedItem {
+  string barcode = 1;
+}
