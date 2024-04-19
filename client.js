@@ -41,4 +41,24 @@ async function askForChoice() {
   processChoice(choice.trim());
 }
 
+async function processChoice(choice) {
+  switch (choice) {
+    case '1':
+      const listProductsStream = client.ListProducts();
+      listProductsStream.on('data', (product) => {
+        console.log(
+          `ID: ${product.id}, Barcode: ${product.barcode}, Name: ${
+            product.name
+          }, Price: $${product.price.toFixed(2)}`,
+        );
+      });
+      listProductsStream.on('end', () => {
+        console.log('List of products ended.');
+        console.log('*******************************************');
+        askForChoice();
+      });
+      break;
+  }
+}
+
 main();
