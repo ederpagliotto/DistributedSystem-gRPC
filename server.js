@@ -92,7 +92,7 @@ server.addService(smartRetailProto.SmartRetail.service, {
   },
 
   ListProducts: (call) => {
-    products.forEach((product) => {
+    products.forEach((pdruct) => {
       call.write(product);
     });
     call.end();
