@@ -6,6 +6,7 @@ const smartRetailProto =
 
 const server = new grpc.Server();
 
+//simulating products
 const products = [
   { id: 1, barcode: '12345', name: 'Smart TV', price: 450.0 },
   { id: 2, barcode: '54321', name: 'Laptop', price: 800.5 },
@@ -14,10 +15,12 @@ const products = [
   { id: 2, barcode: '22222', name: 'Keyboard', price: 80.5 },
 ];
 
+// getting item data based on barcode
 function getItemData(barcode) {
   return products.find((product) => product.barcode === barcode);
 }
 
+//calculating total
 function calculateTotal(baggedItems) {
   let total = 0;
   baggedItems.forEach((barcode) => {
@@ -49,6 +52,7 @@ server.addService(smartRetailProto.SmartRetail.service, {
     }
   },
 
+  //methods
   BagItem: (call, callback) => {
     const barcode = call.request.barcode;
     console.log(`Item with barcode ${barcode} bagged`);

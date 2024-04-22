@@ -3,7 +3,7 @@ syntax = "proto3";
 package smartretail;
 
 service SmartRetail {
-  
+   //RPC methods
   rpc ScanItem(ScanItemRequest) returns (ScanItemResponse) {}
 
   
@@ -19,7 +19,7 @@ service SmartRetail {
   rpc TrackBaggedItems(TrackBaggedItemsRequest) returns (stream BaggedItem) {}
 }
 
-
+//Messages Request-Response
 message ScanItemRequest {
   string barcode = 1; 
 }
@@ -50,6 +50,7 @@ message ListProductsRequest {
   
 }
 
+// Message for Product details
 message Product {
   int32 id = 1;
   string barcode = 2;

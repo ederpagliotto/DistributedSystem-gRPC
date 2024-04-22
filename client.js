@@ -19,7 +19,7 @@ const client = new smartRetailProto.SmartRetail(
 function askQuestion(query) {
   return new Promise((resolve) => rl.question(query, resolve));
 }
-
+// array to store bagged items.
 let baggedItems = [];
 
 async function main() {
@@ -27,6 +27,7 @@ async function main() {
   await askForChoice();
 }
 
+// asking for user choice.
 async function askForChoice() {
   console.log('\nSelect an option:');
   console.log('1: List Products');
@@ -41,6 +42,7 @@ async function askForChoice() {
   processChoice(choice.trim());
 }
 
+// switch case function to process funtionality depending on user choice.
 async function processChoice(choice) {
   switch (choice) {
     case '1':
